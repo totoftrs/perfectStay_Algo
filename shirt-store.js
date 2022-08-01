@@ -5,11 +5,9 @@ export const cost = (shirts) => {
     let result = 0
     let map = {}
     
-    
     if(shirts.length === 0) {
       return 0 
     }
-  
   
     for (const number of shirts) {
       if(map[number]) {
@@ -26,25 +24,27 @@ export const cost = (shirts) => {
     if(result === 6400) {
       return result + (result * -20 / 100)
     }
-  
-    if(Object.keys(map).length === 2) {
-      return result + (result * -5 / 100)
-    }
-  
-    if(Object.keys(map).length === 3) {
-      return result + (result * -10 / 100)
-    }
-  
-    if(Object.keys(map).length === 4) {
-      return result + (result * -20 / 100)
-    }
-  
-    if(Object.keys(map).length === 5) {
-      return result + (result * -25 / 100)
-    }
-  
-  
-    return result
+
+  const CheckLengthObject = Object.keys(map).length
+
+  switch (CheckLengthObject) {
+    case 2:
+    return result + (result * -5 / 100);
+
+    case 3:
+    return result + (result * -10 / 100);
+
+    case 4:
+    return result + (result * -20 / 100);
+
+    case 5:
+    return result + (result * -25 / 100)
+ 
+    default:
+      break;
+  }
+
+  return result
   }
     
 
@@ -58,3 +58,4 @@ export const cost = (shirts) => {
   5 meme t-shirt te donnne une reduction de 25%
 
 */
+
